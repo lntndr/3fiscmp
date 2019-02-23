@@ -1,3 +1,4 @@
 # Gitignore
 *.kate-swap
 *.directory
+*.m~
