@@ -1,6 +1,6 @@
 function moler_4_11
 
-%Fattoriali
+%Domanda a
 k=0;
 x=0;
 s_x=sym(0);
@@ -17,9 +17,9 @@ end
 disp('Il più grande numero che ammette fattoriale esattamente in double');
 disp(k);
 
+%Domanda b
 k=0;
 x=0;
-%cfr riga 7
 while 1
     k=k+1;
     if (factorial(k))>=inf
@@ -27,8 +27,6 @@ while 1
         break;
     end
 end
-disp('Il più grande numero che ammette fattoriale approssimato in double');
+disp('Il più grande numero che ammette fattoriale senza owerflow');
 disp(k);
-
-%Gamme
     
