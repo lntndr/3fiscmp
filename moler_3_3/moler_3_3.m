@@ -65,4 +65,3 @@ disp(round(poly_c)); % elimina qualche imprecisione floating point irril.
 
 
 
-
