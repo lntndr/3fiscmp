@@ -28,5 +28,5 @@ while 1
     end
 end
 disp('Il più grande numero che ammette fattoriale senza owerflow');
-disp(k);wh
+disp(k);
     
