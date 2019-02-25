@@ -15,7 +15,7 @@ Ha senso rifare i conti con gamma considerando che per definizione sono uguali? 
 ## 5.12
 Da fare
 ## 6.12
-Da fare
+Completo e funzionante, volendo da commentare di più
 ## 6.19
 Da fare
 
