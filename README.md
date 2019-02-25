@@ -13,7 +13,7 @@ Sciatto ma funzionante, da scrivere la risposta f
 ## 4.11
 Ha senso rifare i conti con gamma considerando che per definizione sono uguali? Oppure sottointende di dover usare gammaln(x)?
 ## 5.12
-Da fare
+Da controllare i conti ma credo sia giusto
 ## 6.12
 Completo e funzionante, volendo da commentare di più
 ## 6.19
