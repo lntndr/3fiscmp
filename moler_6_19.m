@@ -21,6 +21,8 @@ while 1
           break;
       else
           if k==755
+              load handel;
+              sound(y, Fs);
               disp("UÈ NANI!");
           end
           x_k(k)=prk;
@@ -28,7 +30,7 @@ while 1
   end
   b=toc;
   %%% PARTE B
-  if new_max>old_max && b < 1
+  if new_max>old_max
       c=lsqcurvefit(fit_fun,c,(1:new_max)',x_k);
   else
       break; %<<<----- !Il ciclo finisce qui!
