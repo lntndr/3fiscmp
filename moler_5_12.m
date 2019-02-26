@@ -1,5 +1,6 @@
 function moler_5_12
-%Variabili a discrezione
+
+%Variabili a 
 xmin=-1.5;
 deltax=0.01;
 xmax=1.5;
@@ -40,19 +41,19 @@ A_p=[((x+p).^2),((x+p).*(y+p)),((y+p).^2),x+p,y+p];
 
 cf=A_p\(b+p);
 
-Z=cf(1)*X.^2 +cf(2)*X.*Y + cf(3)*Y.^2 + cf(4)*X + cf(5)*Y + 1;
+Z=cf(1)*X.^2 +cf(2)*X.*Y + cf(3)*Y.^2 + cf(4)*X + cf(5)*Y + 1+p;
 
 contour(X,Y,Z,[0 0],'g');
 
 %Perturbazioni "caotiche" (p varia per ogni parametro)
 
-p=rand(7).*0.001-0.0005;
+p=rand(7,1)'.*0.001-0.0005;
 
-A_p=[((x+p(1)).^2),((x+p(2)).*(y+p(3))),((y+p(4)).^2),x+p(5),y+p(6)];
+A_pc=[((x+p(1)).^2),((x+p(2)).*(y+p(3))),((y+p(4)).^2),x+p(5),y+p(6)];
 
-cf=A_p\(b+p(7));
+cf=A_pc\(b+p(7));
 
-Z=cf(1)*X.^2 +cf(2)*X.*Y + cf(3)*Y.^2 + cf(4)*X + cf(5)*Y + 1;
+Z=cf(1)*X.^2 +cf(2)*X.*Y + cf(3)*Y.^2 + cf(4)*X + cf(5)*Y + 1+p(7);
 
 contour(X,Y,Z,[0 0],'r');
 
