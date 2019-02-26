@@ -1,15 +1,48 @@
 function moler_6_19
 %Domanda a
 %0 è punto di accumulazione degli zeri della 
-
-k_max=1000;              %Valori maggiori richiedono modelli più sofisticati
-x_k=(1:k_max);
-
-for k=1:k_max-1;
-f=@(x) log(x)/x+pi*(k-1/2);
-x_k(k+1)=fzero(f,1/k); %1/k serie decrescente più facile che mi è venuta in                       %mente, niente di più raffinato
+%Ciclo while sufficientemente complesso
+%   A. Un while cerca zeri al crescere di k cercandoli al decrescere di
+%           a+b/x
+%   B. Se ha trovato più zeri della volta prima crea un vettore
+%   C. Un ciclo for popola il vettore con i nuovi zeri
+%   D. Un fit degli zeri ridefinisce a e b facendo ricomiciare il ciclo
+% Il programma fitta solo una delle due sottosequenze, quella positiva
+% Non escludo che ci siano scelte più raffinate
+k=1;
+c=[0,1];
+new_max=1;
+k=1;
+fun = @(c,xdata) c(1)+(c(2)/xdata);
+x_k=[];
+while 1
+  %%% PARTE A
+  max=new_max;
+  while 1
+      k=k+1;
+      f=@(x) log(x)/x+pi*(k-1/2);
+      prk=fzero(f,c(1)+(c(2)/k));
+      if isnan(prk)
+          new_max=k-1;
+          disp("Impossibile trovare zeri ulteriori");
+          break;
+      end
+  end
+  %%% PARTE B
+  if new_max>max
+      x_k=[x_k,k+1:new_max];
+      %%% PARTE C
+      for n=1:new_max;
+        f=@(x) log(x)/x+pi*(n-1/2);
+        x_k(n)=fzero(f,c(1)+(c(2)/n));
+      end
+      %%% PARTE D
+      disp('DDD');
+      c = lsqcurvefit(fun,1,1:new_max,x_k);
+  else
+      break; %<<<----- !Il ciclo finisce qui!
+  end
 end
-
 
 g=@(t) cos(log(t)./t)./t ;
 s=0;
