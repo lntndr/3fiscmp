@@ -2,14 +2,14 @@ function moler_6_19
 %Domanda a
 %0 è punto di accumulazione degli zeri della 
 
-k_max=750;              %Valori maggiori richiedono modelli più sofisticati
-x_k=(ones(k_max+1,1));
+k_max=1000;              %Valori maggiori richiedono modelli più sofisticati
+x_k=(1:k_max);
 
-for k=1:k_max;
+for k=1:k_max-1;
 f=@(x) log(x)/x+pi*(k-1/2);
-x_k(k+1)=fzero(f,1/k); %1/k serie decrescente più facile che mi è venuta in
-                       %mente, niente di più raffinato
+x_k(k+1)=fzero(f,1/k); %1/k serie decrescente più facile che mi è venuta in                       %mente, niente di più raffinato
 end
+
 
 g=@(t) cos(log(t)./t)./t ;
 s=0;
