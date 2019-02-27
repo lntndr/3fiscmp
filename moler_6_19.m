@@ -7,7 +7,7 @@ c=[0,1];
 new_max=1;
 fit_fun = @(c,x) c(1)+(c(2)/x);
 x_k=ones();
-%time=10;
+time=10;
 
 tic;
 while 1
@@ -46,7 +46,7 @@ while 1
   b=toc
   
   %%% PARTE B
-  if new_max>old_max % && b< time
+  if new_max>old_max && b< time
       c=lsqcurvefit(fit_fun,c,(1:new_max)',x_k,zeros(size(c)));
   else
       break; %<<<----- !Il ciclo finisce qui!
@@ -79,9 +79,16 @@ end
 
 m=(s_dv+s_pv)./2;
 
-disp('Penultima e ultima media');
-disp(m((new_max/2)-1));
+disp('FINE PROGRAMMA');
+
+disp('Inf');
+disp(s_pv((new_max/2)));
+
+disp('Best');
 disp(m((new_max/2)));
+
+disp('Sup');
+disp(s_dv((new_max/2)));
 
 plot(1:2:new_max,s_dv,'.k');
 plot(2:2:new_max,s_pv,'.r');
