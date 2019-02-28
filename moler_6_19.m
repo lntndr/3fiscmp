@@ -3,9 +3,9 @@ function moler_6_19
 %0 è punto di accumulazione degli zeri della funzione
 
 k=1;
-c=[0,1];
+c=[1];
 new_max=1;
-fit_fun = @(c,x) c(1)+(c(2)/x);
+fit_fun = @(c,x) (c(1)/x);
 x_k=ones();
 time=10;
 
@@ -18,7 +18,7 @@ while 1
       zero_fun=@(x) log(x)/x+pi*(k-1/2);
       
       try
-        prk=fzero(zero_fun,c(1)+(c(2)/k));
+        prk=fzero(zero_fun,c(1)/k);
       catch
           
         disp('Errore allo zero');
@@ -34,7 +34,7 @@ while 1
         break;  
       end
       
-      if isnan(prk)
+      if isnan(prk) || k == 500001
           k=k-1;
           new_max=k;
           break;
