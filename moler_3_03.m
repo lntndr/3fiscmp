@@ -26,6 +26,10 @@ plot(u,pch,'--g');
 
 % Domanda B
 
+%Globalmente pchip sembra restituire i risultati migliori, tuttavia il
+%valore più credibile per 0.3, dando per ipotesi che la misura non
+%influenzi il valore dei dati in maniera significativa, è spline.
+
 eval_point=0.3;
 
 if eval_point+1>0
@@ -51,6 +55,7 @@ poly_c=polyfit(x,y,5);
 
 disp('I coefficienti del polinomio sono:');
 
+disp(poly_c); 
 disp(round(poly_c)); % elimina qualche imprecisione floating point irril.
 
 
