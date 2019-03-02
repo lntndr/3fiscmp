@@ -15,10 +15,11 @@ def_i=int(f,[-1 1])
 e_def_i=eval(def_i)
 
 %Domanda d
-%Il loop infinito è scongiurato eliminando punti a tg verticale 
-quadtx(@(x)log(1+x)*log(1-x),-1+eps,1-eps)
+%La richiesta dell'esercizio causa un loop infinito
 
 %Domanda e
+%Il loop infinito è scongiurato eliminando punti a tg verticale 
+quadtx(@(x)log(1+x)*log(1-x),-1+eps,1-eps)
 
 ord=10;
 
