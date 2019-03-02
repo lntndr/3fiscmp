@@ -23,7 +23,9 @@ bsct_res=bisection(f,1,2)
 %Domanda f
 fztx_res=fzerotx(f,[1 2])
 
-%Commenti arguti sui risultati di fztz_res
+%L'algoritmo fzerotx non raggiunge le tre radici perché per come è scritto
+%si ferma al raggiungimento di uno zero supponendo che sia l'unico
+%nell'intervallo dato. Nel caso specifico coincide con il metodo secante.
 
 function x=newton(p,eg)
 
