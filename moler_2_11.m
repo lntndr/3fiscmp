@@ -1,6 +1,8 @@
 function moler_2_11()
 
-%Sunto dell'esercizio
+%L'esercizio consiste nel calcolo dell'inversa di un insieme di matrici
+%showcase e della comparazione numerica con il risultato ottenuto tramite i
+%metodi integrati in MATLAB.
 
 showcase = {rand(3,5),...                  % matrice non quadrata casuale
             [0 0 0; 0 1 0; 0 2 0],...      %         singolare
@@ -36,7 +38,7 @@ for c=1:nex
     if ~isnan(my) % myinv è giunto a qualcosa
         decimal=1;
         while isequal(round(my,decimal),round(ml,decimal))
-        decimal= decimal+1;
+            decimal= decimal+1;
         end
         disp("I due risultati sono in accordo fino a 10^-" + decimal);
     end
@@ -94,7 +96,7 @@ elseif isequal(A,A')
           X(:,k) = x;
       end
    end
-   return
+   return;
 end
 
 % Se fallisce il resto fattorizzazione LU
