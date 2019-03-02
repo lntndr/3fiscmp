@@ -30,8 +30,7 @@ contour(X,Y,Z,[0 0],'k');
 
 plot(x,y,'ob','MarkerFaceColor',[0.5 0.5 1]);
 
-%%
-% Non sono convinto che debba andare a finire così
+% Domanda B
 
 %Perturbazioni "omogenee" (identico p per ogni parametro)
 

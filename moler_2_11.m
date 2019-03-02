@@ -6,7 +6,6 @@ function moler_2_11()
 
 showcase = {rand(3,5),...                  % matrice non quadrata casuale
             [0 0 0; 0 1 0; 0 2 0],...      %         singolare
-            [2 -1 0; -1 2 -1; 0 -1 2],...  %         simmetrica, def. pos.
             [1  0 0; 3 5 0; 7 9 11],...    %         triangolare inferiore
             [2 4 6; 0 8 10; 0 0 12],...    %         triangolare superiore
             rand(5),...                    %         quadrata casuale

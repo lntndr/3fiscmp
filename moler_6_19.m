@@ -3,7 +3,7 @@ function moler_6_19
 %Variabili modificabili dall'utente, il programma si ferma al primo blocco
 %raggiunto
 
-time_max=0.2; 
+time_max=90; 
 fix_max=realmax();
 
 %Parte A -> Cerca gli estremi di integrazione annullando la funzione

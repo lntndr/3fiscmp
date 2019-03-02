@@ -1,7 +1,7 @@
 # fiscom201903
 Esercizi di fisica computazionale per il primo marzo 
 ## 2.11
-Mi pare sia sostanzialmente in ordine
+Completo, ma c'è un bug per la matrice 3: l'uguaglianza numerica c'è ma non viene riconosciuta per un problema di arrotondamento. Possibile soluzione: togliamola.
 ## 2.15
 Pronto il grafico dell'andamento del condizionamento, mancano le considerazioni
 ## 3.3
