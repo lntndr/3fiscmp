@@ -1,5 +1,8 @@
 function moler_4_3
 
+%Il programma testa su un polinomio dato diversi algoritmi di ricerca degli
+%zeri.
+
 p=[816 -3835 +6000 -3125];
 
 %Domanda a
@@ -27,6 +30,7 @@ fztx_res=fzerotx(f,[1 2])
 %si ferma al raggiungimento di uno zero supponendo che sia l'unico
 %nell'intervallo dato. Nel caso specifico coincide con il metodo secante.
 
+%NEWTON
 function x=newton(p,eg)
 
 f=@(x) polyval(p,x);
@@ -40,6 +44,7 @@ while abs(x-xprev)>eps*abs(x)
     x=x-(feval(f,x)/feval(fprime,x));
 end
 
+%SECANTE
 function c=secant(f,a,b)
 
 while abs(b-a)>eps*abs(b)
@@ -48,6 +53,7 @@ while abs(b-a)>eps*abs(b)
     b=b+(b-c)/(feval(f,c)/feval(f,b)-1);
 end
 
+%BISEZIONE
 function x=bisection(f,a,b)
 
 while abs(b-a)>eps*abs(b)

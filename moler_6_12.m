@@ -1,5 +1,9 @@
 function moler_6_12
 
+%Il programma lavora con la funzione log(1+x)*log(1-x) e ne valuta
+%l'integrale in modi diversi, aggirando i problemi agli estremi e 
+%comparando i diversi metodi.
+
 syms x;
 
 f=log(1+x)*log(1-x);

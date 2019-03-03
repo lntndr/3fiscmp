@@ -1,5 +1,10 @@
 function moler_5_12
 
+%Il programma interpola un'orbita data con una curva di livello di una
+%forma quadratica ottenuta tramite soluzione di un sistema lineare e
+%restituisce un grafico con le posizioni date, l'orbita calcolata e le due
+%orbite perturbate come spiegato nel corpo.
+
 %Variabili a 
 xmin=-1.5;
 deltax=0.01;

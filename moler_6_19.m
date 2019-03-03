@@ -1,5 +1,11 @@
 function moler_6_19
 
+%Il programma calcola l'integrale dato in due parti: prima ricava gli
+%estremi di integrazione degli elementi della serie trovando gli zeri nella
+%funzione data nella traccia, poi usa quad per valutare i singoli elementi 
+%della traccia. Una volta ottentuta la serie paragona i risultati con la
+%serie ottenuta tramite accelerazione di Aitken.
+
 %Variabili modificabili dall'utente, il programma si ferma al primo blocco
 %raggiunto
 
