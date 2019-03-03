@@ -3,7 +3,7 @@ function moler_6_19
 %Variabili modificabili dall'utente, il programma si ferma al primo blocco
 %raggiunto
 
-time_max=3; 
+time_max=90; 
 fix_max=realmax();
 
 %Parte A -> Cerca gli estremi di integrazione annullando la funzione
@@ -101,21 +101,3 @@ disp(s_dv((new_sup/2)));
 plot(1:2:new_sup,s_dv,'.k');
 plot(2:2:new_sup,s_pv,'.r');
 plot(1.5:2:new_sup+0.5,m,'.b');
-
-%Accelerazione Aitken
-%Recupero valori iniziali
-
-s_v=[s_dv'; s_pv']; %Unisce somme pari e dispari
-s_v=s_v(:)';
-
-t=zeros(new_sup-1,1); %Alloca memoria
-t_sum=t;
-
-for k=2:new_sup-1
-    t(k)=(s_v(k+1)-s_v(k))^2/(s_v(k+1)-s_v(k)+s_v(k-1));
-    t_sum(k)=s+t(k);
-end
-
-plot(0:new_sup-2,t_sum,'.c');
-
-ylim([0.32 0.325]); %Aiuta la chiarezza del grafico
