@@ -1,5 +1,9 @@
 function moler_3_3
 
+%Il programma, dai dati della traccia, li interpola in vario modo per
+%commentarne i risultati e infine ricava a posteriori il polinomio che ha
+%generato i dati della traccia.git
+
 % Domanda A
 
 % Carico dati della traccia
