@@ -46,7 +46,7 @@ while (smt_wrong==0) && (order < max_order)
     order=order+1;
 end
 
-plot(m_x,m_y,'*k');
+plot(m_x,m_y,'.k');
 
 set(gca, 'YScale', 'log')
 set(gca, 'XScale', 'log')
@@ -60,14 +60,16 @@ set(gca, 'XScale', 'log')
 %Il determinante delle matrici golub è, date le matrici di cui sopra = 1
 %per il th. di Binet
 
+disp('Deteriminante di matrici golub');
 for k=2:5
     disp(det(golub(k)));
 end
+
+hold off
 
 function x=get_tries(order)
 if  10^(3-order)>=10
     x=10^(3-order);
 else
-    x=5;
+    x=10;
 end
-
