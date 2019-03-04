@@ -1,4 +1,4 @@
-function moler_2_15     % Esercizio concepito come .ml
+function moler_2_15
 
 % Variabili modificabili a piacere                    
 max_order=3;            % Ogni tentativo viene eseguito con su
@@ -46,7 +46,7 @@ while (smt_wrong==0) && (order < max_order)
     order=order+1;
 end
 
-plot(m_x,m_y,'*k');
+plot(m_x,m_y,'.k');
 
 set(gca, 'YScale', 'log')
 set(gca, 'XScale', 'log')
@@ -68,6 +68,8 @@ function x=get_tries(order)
 if  10^(3-order)>=10
     x=10^(3-order);
 else
-    x=5;
+    x=10;
 end
+
+hold off
 
