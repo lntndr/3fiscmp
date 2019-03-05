@@ -2,9 +2,13 @@ function moler_3_09
 k=4;
 hold on
 set(gca, 'YScale', 'log')
-bar_x=-1:10^-k:1;
+bar_x=-1:0.25*10^-k:1;
 bar_y=bar_x;
-for n=3:1000:5003
+n_max=10000;
+if mod(n_max,2)==0
+    n_max=n_max-1;
+end
+for n=3:1000:n_max
     vgrey=[1-n/5003 1-n/5003 1-n/5003];
     poly_x = -1 + 2*(0:n-1)/(n-1);
     poly_y = rungerat(poly_x);
@@ -12,7 +16,8 @@ for n=3:1000:5003
     for m=1:size(bar_x')
         bar_y(m)= abs(poly_values(m)-rungerat(bar_x(m)));
     end
-    bar(bar_x,bar_y,'FaceColor',vgrey);
+    filter= bar_y < 10; %blocca il grafico di valori superiori a 10
+    bar(bar_x,bar_y.*filter,1,'FaceColor',colorpicker(n,n_max));
 end
 hold off
 
@@ -39,3 +44,9 @@ for k = 1:n
    end
    v = v + w*y(k);
 end
+
+function c=colorpicker(n,n_max)
+    c(1)=1-(n/n_max);
+    c(2)=1-(n/n_max);
+    c(3)=0.9-0.6*(n/n_max);
+return
