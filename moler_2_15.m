@@ -1,13 +1,14 @@
-function moler_2_15
+fucntion moler_2_15
 
-% Variabili modificabili a piacere                    
 max_order=3;            % Ogni tentativo viene eseguito con su
                         % una matrice n*n con n=m*10^(order), m definito
                         % da un ciclo for. Il programma dovrebbe gestire 
                         % eccezioni dovute al sopraggiungere del limite di
                         % memoria allocabile per un array, ma potrebbe cau-
-                        % sare rallentamenti                       
-% --------------------------------
+                        % sare rallentamenti                    
+core_2_15(max_moler);
+
+function core_2_15(max_order);
 
 %%Domanda A
 % Il programma crea un grafico calcolando alcuni condest di matrici a
