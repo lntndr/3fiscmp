@@ -1,14 +1,18 @@
 function moler_3_3
 
-%Il programma, dai dati della traccia, li interpola in vario modo per
-%commentarne i risultati e infine ricava a posteriori il polinomio che ha
-%generato i dati della traccia.git
-
-% Domanda A
-
-% Carico dati della traccia
+% Dati della traccia
 x=[-1 -0.96 -0.65 0.10 0.40 1]';
 y=[-1 -0.1512 0.3860 0.4802 0.8838 1.]';
+
+core_3_3(x,y);
+
+function core_3_3(x,y)
+
+%Il programma, dai dati della traccia, li interpola in vario modo per
+%commentarne i risultati e infine ricava a posteriori il polinomio che ha
+%generato i dati della traccia
+
+% Domanda A
 
 hold on
 
@@ -58,8 +62,8 @@ disp('Commenti arguti per rispondere alla domanda b');
 poly_c=polyfit(x,y,5);
 
 disp('I coefficienti del polinomio sono:');
-
-disp(poly_c); 
+disp(poly_c);
+disp('Al netto degli errori di precisione floating point');
 disp(round(poly_c)); % elimina qualche imprecisione floating point irril.
 
 
