@@ -1,4 +1,4 @@
-fucntion moler_2_15
+function moler_2_15
 
 max_order=3;            % Ogni tentativo viene eseguito con su
                         % una matrice n*n con n=m*10^(order), m definito
