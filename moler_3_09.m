@@ -1,74 +1,81 @@
-function moler_3_09(arg)
-%moler3_9  Runge's polynomial interpolation example.
-%   F(x) = 1/(1+25*x^2)
-%   interpolazione tramite polinomi di grado crescente nell'intervallo tra
-%   -1 e 1 , osservo come l'interpolazione converga per n che tende ad
-%   infinito solo nell'intervallo chiuso prima citato.
-%   questo programma è stato ricavato modificando la distribuzione dei punti,
-%   i punti qui si distribuiscono come i nodi di Chebyshev 
+function moler_3_09
 
-if nargin == 0
+k=4; 
+n=50;
+n_max=253;
 
-   % Inizializzazione grafico e uicontrols
+core_3_09(k,n,n_max);
 
-   shg
-   clf reset
-   set(gcf,'numbertitle','off','menu','none', ...
-       'name','Runge''s interpolation example')
-   n = 1;
-   u = -1.1:.01:1.1;
-   z = rungerat(u);
-   h.plot = plot(u,z,'-', 0,1,'o', u,z,'-');
-   set(h.plot(1),'color',[.6 .6 .6]);
-   set(h.plot(2),'color','blue');
-   set(h.plot(3),'color',[0 2/3 0]);
-   axis([-1.1 1.1 -0.1 1.1])
-   title('1/(1+25*x^2)','interpreter','none')
+function core_3_09(k,n,n_max)
+% k => passo di valutazione del polinomio = 10^-k
+% n => passo di salita di grado del polinomio
+% n_max => massimo grado di valutazione del polinomio
 
-   h.minus = uicontrol('units','norm','pos',[.38 .01 .06 .05], ...
-          'fontsize',12,'string','<','callback','moler_3_09(''n--'')');
-   h.n = uicontrol('units','norm','pos',[.46 .01 .12 .05], ...
-          'fontsize',12,'userdata',n,'callback','moler_3_09(''n=1'')');
-   h.plus = uicontrol('units','norm','pos',[.60 .01 .06 .05], ...
-          'fontsize',12,'string','>','callback','moler_3_09(''n++'')');
-   h.close = uicontrol('units','norm','pos',[.80 .01 .10 .05], ...
-          'fontsize',12,'string','close','callback','close');
+bar_x=-1:10^-k:1;
+bar_y=bar_x;
 
-   set(gcf,'userdata',h)
-   arg = 'n=1';
+if mod(n_max,2)==0
+    n_max=n_max-1;
 end
 
-% Update grafico.
-
-h = get(gcf,'userdata');
-
-% Numero di punti di interpolazione di Chebyshev.
-
-n = get(h.n,'userdata');
-switch arg
-   case 'n--', n = n-2;
-   case 'n++', n = n+2;
-   case 'n=1', n = 1;
+for t=1:2
+    if t==1
+        pt_dis = @eqdn;
+        f_eqd = figure;
+        y_eps = 200*eps;
+    elseif t==2
+        pt_dis = @chby;
+        f_chb = figure;
+        y_eps = 3*eps;
+    end
+    hold on
+    set(gca, 'YScale', 'log')
+    for s=3:n:n_max
+        poly_x = pt_dis(s);
+        poly_y = rungerat(poly_x);
+        poly_values = polyinterp(poly_x,poly_y,bar_x);
+        for m=1:size(bar_x')
+            bar_y(m)= abs(poly_values(m)-rungerat(bar_x(m)));
+        end
+        bar(bar_x,bar_y,1,'FaceColor',colorpicker(s,n_max));
+    end
+    line([-1, 1], [eps, eps], 'Color', 'r', 'LineWidth', 2);
+    text(0.5,y_eps,'eps','Color','red','FontSize',12)
+    hold off
 end
-set(h.n,'string',['n = ' num2str(n)],'userdata',n);
-if n==1
-   set(h.minus,'enable','off');
-else
-   set(h.minus,'enable','on');
-end
 
-if n == 1;
-   x = 0;
-else
-   x = cos(pi*(2*(1:n)-1)/(2*(n-1)));
-end
-y = rungerat(x);
-u = get(h.plot(1),'xdata');
-v = polyinterp(x,y,u);
-set(h.plot(2),'xdata',x,'ydata',y);
-set(h.plot(3),'xdata',u,'ydata',v);
-
-% ------------------------
-
-function y = rungerat(x);
+function y = rungerat(x)
 y = 1./(1+25*x.^2);
+
+function v = polyinterp(x,y,u)
+%POLYINTERP  Polynomial interpolation.
+%   v = POLYINTERP(x,y,u) computes v(j) = P(u(j)) where P is the
+%   polynomial of degree d = length(x)-1 with P(x(i)) = y(i).
+
+%   Copyright 2014 Cleve Moler
+%   Copyright 2014 The MathWorks, Inc.
+
+% Use Lagrangian representation.
+% Evaluate at all elements of u simultaneously.
+
+n = length(x);
+v = zeros(size(u));
+for k = 1:n
+   w = ones(size(u));
+   for j = [1:k-1 k+1:n]
+      w = (u-x(j))./(x(k)-x(j)).*w;
+   end
+   v = v + w*y(k);
+end
+
+function c = colorpicker(n,n_max)
+    c(1)=1-(n/n_max);
+    c(2)=1-(n/n_max);
+    c(3)=1/6+1/3*(n/n_max);
+return
+
+function x = eqdn(n)
+x=-1 + 2*(0:n-1)/(n-1);
+
+function x = chby(n)
+x=cos(pi*((2*(1:n-1))/(2*n)));
