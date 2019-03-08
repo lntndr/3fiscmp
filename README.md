@@ -7,14 +7,14 @@ Completo e commentato
 ## 3.3
 Completo e commentato
 ## 3.9
-Riscrivere in modo che non abbia input
+Completo e commentato
 ## 4.3
 Completo e commentato
 ## 4.11
 Completo e commentato
 ## 5.12
-Chiedere lumi a Destri sul risultato delle perturbazioni
+Completo e commentato
 ## 6.12
-Completo e funzionante
+Completo e commentato
 ## 6.19
-Chiedere lumi su Aitken
+Completo e commentato
