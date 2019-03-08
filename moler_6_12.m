@@ -19,7 +19,9 @@ def_i=int(f,[-1 1])
 e_def_i=eval(def_i)
 
 %Domanda d
-%La richiesta dell'esercizio causa un loop infinito
+%La richiesta dell'esercizio causa un loop infinito in quanto
+%l'algoritmo non è in grado di gestire i punti a tangente
+%verticale presenti negli estremi di integrazione.
 
 %Domanda e
 %Il loop infinito è scongiurato eliminando punti a tg verticale 
@@ -46,8 +48,3 @@ fplot(@(x) x,[x(ord) x(1)],'b');
 
 set(gca, 'YScale', 'log')
 set(gca, 'XScale', 'log')
-
-
-
-
-
