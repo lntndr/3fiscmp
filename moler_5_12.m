@@ -2,8 +2,8 @@ function moler_5_12
 
 %Il programma interpola un'orbita data con una curva di livello di una
 %forma quadratica ottenuta tramite soluzione di un sistema lineare e
-%restituisce un grafico con le posizioni date, l'orbita calcolata e le due
-%orbite perturbate come spiegato nel corpo.
+%restituisce un grafico con le posizioni date, 5 set di posizioni
+%perturbate e le relative orbite calcolate.
 
 %Variabili a 
 xmin=-1.5;
@@ -31,38 +31,32 @@ Z=cf(1)*X.^2 +cf(2)*X.*Y + cf(3)*Y.^2 + cf(4)*X + cf(5)*Y + 1;
 
 hold on
 
-contour(X,Y,Z,[0 0],'k');
+contour(X,Y,Z,[0 0],'b');
 
 plot(x,y,'ob','MarkerFaceColor',[0.5 0.5 1]);
 
-% Domanda B
+x_p=x;
+y_p=y;
 
-%Perturbazioni "omogenee" (identico p per ogni parametro)
+%Perturbazioni
+%I vari tentativi associati alle posizioni sono marcati per colore
+for t=1:5
+    
+    for n=1:size(x,1)
+        x_p(n)=x(n)+(rand()*0.001-0.0005);
+        y_p(n)=y(n)+(rand()*0.001-0.0005);
+    end
+    
+    plot(x_p,y_p,'Color',colorpicker(t,5),'Marker','+','LineStyle','none');
+    
+    A=[((x_p).^2),((x_p).*(y_p)),((y_p).^2),y_p,x_p];
+    cf=A\b;
+    Z=cf(1)*X.^2 +cf(2)*X.*Y + cf(3)*Y.^2 + cf(4)*X + cf(5)*Y + 1;
+    contour(X,Y,Z,[0 0],'Color',colorpicker(t,5));
+end
 
-p=rand()*0.001-0.0005;
-
-A_p=[((x+p).^2),((x+p).*(y+p)),((y+p).^2),x+p,y+p];
-
-cf=A_p\(b+p);
-
-Z=cf(1)*X.^2 +cf(2)*X.*Y + cf(3)*Y.^2 + cf(4)*X + cf(5)*Y + 1+p;
-
-contour(X,Y,Z,[0 0],'g');
-
-%Perturbazioni "caotiche" (p varia per ogni parametro)
-
-p=rand(7,1)'.*0.001-0.0005;
-
-A_pc=[((x+p(1)).^2),((x+p(2)).*(y+p(3))),((y+p(4)).^2),x+p(5),y+p(6)];
-
-cf=A_pc\(b+p(7));
-
-Z=cf(1)*X.^2 +cf(2)*X.*Y + cf(3)*Y.^2 + cf(4)*X + cf(5)*Y + 1+p(7);
-
-contour(X,Y,Z,[0 0],'r');
-
-
-
-
-
-
+function c = colorpicker(n,n_max)
+    c(1)=1-(n/n_max);
+    c(2)=(n/n_max);
+    c(3)=0.1+0.2*(n/n_max);
+return
