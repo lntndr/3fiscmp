@@ -1,4 +1,7 @@
 function moler_3_3
+%Il programma, dai dati della traccia, li interpola in vario modo per
+%commentarne i risultati e infine ricava a posteriori il polinomio che ha
+%generato i dati della traccia
 
 % Dati della traccia
 x=[-1 -0.96 -0.65 0.10 0.40 1]';
@@ -7,10 +10,6 @@ y=[-1 -0.1512 0.3860 0.4802 0.8838 1.]';
 core_3_3(x,y);
 
 function core_3_3(x,y)
-
-%Il programma, dai dati della traccia, li interpola in vario modo per
-%commentarne i risultati e infine ricava a posteriori il polinomio che ha
-%generato i dati della traccia
 
 % Domanda A
 
@@ -21,6 +20,8 @@ plot(x,y,'*k');
 % Preparo interpolazioni
 
 u=(-1:0.01:1)';
+
+% Tutte funzioni implementate nel moler
 
 pcl = piecelin(x,y,u);
 ply = polyinterp(x,y,u);
@@ -57,7 +58,8 @@ disp('Commenti arguti per rispondere alla domanda b');
 
 % Domanda C
 
-%Ho messo 5 parametri per (#punti)-1
+%Ho messo 5 parametri per (#punti)-1 per ricavare il polinomio con
+#polyfit
 
 poly_c=polyfit(x,y,5);
 
@@ -65,16 +67,3 @@ disp('I coefficienti del polinomio sono:');
 disp(poly_c);
 disp('Al netto degli errori di precisione floating point');
 disp(round(poly_c)); % elimina qualche imprecisione floating point irril.
-
-
-
-
-
-
-
-
-
-
-
-
-
