@@ -1,4 +1,7 @@
 function moler_2_15
+% Il programma crea un grafico calcolando alcuni condest di matrici a
+% a seconda dell'ordine (cfr. get_tries) e stampando a schermo i singoli
+% risultati e le medie.
 
 max_order=3;            % Ogni tentativo viene eseguito con su
                         % una matrice n*n con n=m*10^(order), m definito
@@ -11,9 +14,6 @@ core_2_15(max_moler);
 function core_2_15(max_order);
 
 %%Domanda A
-% Il programma crea un grafico calcolando alcuni condest di matrici a
-% a seconda dell'ordine (cfr. get_tries) e stampando a schermo i singoli
-% risultati e le medie.
 % Osservando i risultati si nota come ci siano due diversi comportamenti
 % per discriminati da x~10: l'andamento è grossomodo espoenziale per
 % valori inferiori e lineare per valori superiori.
@@ -58,8 +58,10 @@ set(gca, 'XScale', 'log')
 %generate da numeri causali con 1 sulla diagonale
 
 %%Domanda C
-%Il determinante delle matrici golub è, date le matrici di cui sopra = 1
-%per il th. di Binet
+%Dato che una matrice tipo Golub è il prodotto di matrici triangolari
+%con ogni elemento della diagonale uguale a 1, ed essendo il det. di
+%una matrice triangolare uguale al prodotto degli elementi della
+%diagonale, per il th. di Binet il determinante è 1.
 
 disp('Deteriminante di matrici golub');
 for k=2:5
