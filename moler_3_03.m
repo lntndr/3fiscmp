@@ -1,4 +1,4 @@
-function moler_3_3
+function moler_3_03
 %Il programma, dai dati della traccia, li interpola in vario modo per
 %commentarne i risultati e infine ricava a posteriori il polinomio che ha
 %generato i dati della traccia
@@ -58,8 +58,7 @@ disp('Commenti arguti per rispondere alla domanda b');
 
 % Domanda C
 
-%Ho messo 5 parametri per (#punti)-1 per ricavare il polinomio con
-#polyfit
+%Ho messo 5 parametri per (#punti)-1 per ricavare il polinomio con polyfit
 
 poly_c=polyfit(x,y,5);
 
