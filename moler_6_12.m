@@ -13,7 +13,7 @@ fa=figure;
 fplot(f,[-1 1]);
 
 %Domanda b
-def_i=int(f,[-1 1])
+def_i=int(f,[-1 1]);
 
 %Domanda c
 e_def_i=eval(def_i)
@@ -25,7 +25,7 @@ e_def_i=eval(def_i)
 
 %Domanda e
 %Il loop infinito è scongiurato eliminando punti a tg verticale 
-quadtx(@(x)log(1+x)*log(1-x),-1+eps,1-eps)
+num_int=quadtx(@(x)log(1+x)*log(1-x),-1+eps,1-eps)
 
 ord=10;
 
@@ -46,5 +46,6 @@ plot(x,y,'*k');
 % L'errore cresce linearmente rispetto alla tolleranza
 fplot(@(x) x,[x(ord) x(1)],'b');
 
-set(gca, 'YScale', 'log')
-set(gca, 'XScale', 'log')
+set(gca, 'YScale', 'log');
+set(gca, 'XScale', 'log');
+hold off

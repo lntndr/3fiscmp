@@ -1,5 +1,11 @@
 function moler_3_09
 
+%Il programma valuta l'interpretazione di Lagrange in serie di punti
+%prima equidistanziati e poi secondo i nodi di Chebyshev con polinomi di
+%grado crescente (3,53,103,153,203,253). La differenza tra il valore del
+%polinomio e della funzione viene riprodotta tramite grafico bar()
+%identificando i vari ordini con colori diversi.
+
 k=4; 
 n=50;
 n_max=253;
@@ -43,6 +49,20 @@ for t=1:2
     text(0.5,y_eps,'eps','Color','red','FontSize',12)
     hold off
 end
+
+%domanda a
+%   L'intervallo in cui il polinomio converge ad f(x) al crescere del grado 
+%   del polinomio rimanendo comunque confinato nell'intervallo -1 e 1.
+%   Osservo in particolare come avvicinandosi a -1 e 1 il polinomio diverga
+%   infinto e l'intervallo di convergenza rimanga sempre contenuto in (-1,1) 
+
+
+%domanda b
+%   per permettere al polinomio di convergere a f(x) in tutto l'intervallo
+%   [-1,1] abbiamo cambiato la distribuzione dei punti di interpolazione
+%   usando i nodi di Chebyshev invece che mantenerli ugualmente
+%   distanziati. Nel secondo grafico si evidenzia come al crescere del
+%   grado le differenze tendano a ridursi e non superino mai il valore 1.
 
 function y = rungerat(x)
 y = 1./(1+25*x.^2);

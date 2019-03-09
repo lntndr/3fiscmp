@@ -34,7 +34,7 @@ tic;
 %della traccia
 
 while 1
-
+    old_sup=new_sup;
     %Parte A.1 il ciclo while usa fzero per trovare le radici fino a quando
     %riesce a trovarne o non viene raggiunta una condizione di blocco
     while 1
