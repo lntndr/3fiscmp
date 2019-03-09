@@ -9,7 +9,7 @@ max_order=3;            % Ogni tentativo viene eseguito con su
                         % eccezioni dovute al sopraggiungere del limite di
                         % memoria allocabile per un array, ma potrebbe cau-
                         % sare rallentamenti                    
-core_2_15(max_moler);
+core_2_15(max_order);
 
 function core_2_15(max_order);
 
