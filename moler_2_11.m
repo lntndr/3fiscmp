@@ -8,6 +8,7 @@ showcase = {rand(3,5),...                  % matrice non quadrata casuale
             [0 0 0; 0 1 0; 0 2 0],...      %         singolare                             
             [1  0 0; 3 5 0; 7 9 11],...    %         triangolare inferiore
             [2 4 6; 0 8 10; 0 0 12],...    %         triangolare superiore
+            [2 -1 0; -1 2 -1; 0 -1 2], ... %         definita positiva
             rand(5),...                    %         quadrata casuale
             magic(5),...                   %         magica 5*5
             golub(5)};                     %         tipo Golub             
@@ -36,7 +37,7 @@ for c=1:nex
     % Verifica fino a che decimale sono in accordo
     if ~isnan(my) % myinv è giunto a qualcosa
         decimal=1;
-        while isequal(round(my,decimal),round(ml,decimal))
+        while isequal(fix(my*10^decimal),fix(ml*10^decimal)) && decimal<17
             decimal= decimal+1;
         end
         disp("I due risultati sono in accordo fino a 10^-" + decimal);
